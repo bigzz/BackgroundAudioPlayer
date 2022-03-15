@@ -30,9 +30,11 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
   // MARK: Setups
   func setUpPlayer() {
     do {
-      let url = Bundle.main.url(forResource: "song", withExtension: "mp3")
+      let url = Bundle.main.url(forResource: "blank", withExtension: "wav")
       player = try AVAudioPlayer(contentsOf: url!)
       player.delegate = self
+      player.numberOfLoops = -1
+      player.volume = 0.01
       player.prepareToPlay()
     } catch let error as NSError {
       print("Failed to init audio player: \(error)")
